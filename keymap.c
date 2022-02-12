@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
-
+// OLED module displays current layer state: Base/Default of Func/RGB
 void oled_task_user(void) {
     oled_write_P(PSTR("Layer: "), false);
 
@@ -75,24 +75,23 @@ void oled_task_user(void) {
             oled_write_ln_P(PSTR("Undefined"), false);
     }
 
-
 }
 #endif
 
 void matrix_init_user(void) {
   matrix_init_remote_kb();
-  //register_code(KC_NLCK);
-  //unregister_code(KC_NLCK);
 }
 
 void matrix_scan_user(void) {
   matrix_scan_remote_kb();
 }
 
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   process_record_remote_kb(keycode, record);
-
   switch(keycode) {
+    // Sets numpad to flashing mode, or can hold reset button under Numpad
     case PROG:
       if (record->event.pressed) {
         set_bitc_LED(LED_DIM);
@@ -101,6 +100,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
+    // After calculator is launched, moves back to Base/Default layer so can immediately start typing in numbers
     case KC_CALC:
       if (record->event.pressed) {
         tap_code(keycode);
@@ -115,8 +115,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
+
 bool encoder_update_user(uint8_t index, bool clockwise) {
   switch (get_highest_layer(layer_state)) {
+        // In Base/Default layer, encoder changes volume
         case _BASE:
             if (clockwise) {
               tap_code(KC_VOLD);
@@ -124,6 +126,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
               tap_code(KC_VOLU);
             }
             break;
+        // In Func/RGB layer, encoder scrolls up or down by page
         case _FUNC:
             if (clockwise) {
               tap_code(KC_PGDN);
@@ -135,6 +138,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   return true;
 }
 
+
+// Can be ignored: used when trying to troubleshoot Num-Lock
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     case _FUNC:
@@ -148,10 +153,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 }
 
+// Turn Bit-C LED off if Num-Lock is off, on if Num-Lock is on
 void led_set_kb(uint8_t usb_led) {
   if (usb_led & (1<<USB_LED_NUM_LOCK))
     set_bitc_LED(LED_DIM);
   else
     set_bitc_LED(LED_OFF);
+  // After changing Num-Lock, moves back to Base/Default Layer
   layer_move(_BASE);
 }
