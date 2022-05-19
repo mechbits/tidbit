@@ -7,7 +7,7 @@ Has 2 Layers/Modes: Default and RGB
 
 Default Layer
 - Default numberpad functions
-- Rotary encoder serves as Backslash, unless rapidly taped twice
+- Rotary encoder serves as Backslash, unless rapidly tapped twice
 - Turning rotary encoder changes volume
 - Bit-C LED is off when Num-Lock is off, on when Num-Lock is on
 - Num-Lock is toggled in the RGB Layer
