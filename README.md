@@ -6,6 +6,9 @@ Has 2 Layers/Modes: Default and RGB
 - To change layers, rapidly tap the rotary encoder twice
 
 Default Layer
+
+
+![Layer 11](https://user-images.githubusercontent.com/99014835/169425500-d2693378-a636-49e0-bb5b-bcff5cc0cf23.jpg)
 - Default numberpad functions
 - Rotary encoder serves as Backslash, unless rapidly tapped twice
 - Turning rotary encoder changes volume
@@ -13,6 +16,9 @@ Default Layer
 - Num-Lock is toggled in the RGB Layer
 
 RGB Layer
+
+
+![Layer 22](https://user-images.githubusercontent.com/99014835/169425563-b3725d6f-739e-4f0a-9ba6-7008bfc6c15d.jpg)
 - Has multiple RGB modes and setting selections
 - Turning rotary encoder scrolls up/down
 - Subtract key toggles Num-Lock
