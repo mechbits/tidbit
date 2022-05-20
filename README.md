@@ -2,7 +2,7 @@
 Custom firmware for Tidbit Numpad.
 
 Has 2 Layers/Modes: Default and RGB
-- Current layer displayed on OLED Display
+- Current layer displayed on OLED display
 - To change layers, rapidly tap the rotary encoder twice
 
 Default Layer
