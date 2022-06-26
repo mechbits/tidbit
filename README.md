@@ -30,6 +30,7 @@ https://www.youtube.com/watch?v=_d1RjwxExso&t=190s
 
 Flashing Instructions
 -
+Starting Reference: https://docs.qmk.fm/#/newbs_getting_started
 1. Install MSYS2 and update its packages: https://www.msys2.org/
 2. Download qmk_firmware: https://github.com/qmk/qmk_firmware
 3. Download nullbits tidbit firmware: https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/tidbit
